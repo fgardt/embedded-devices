@@ -12,27 +12,36 @@ use embedded_devices_derive::{device, device_impl};
 pub mod address;
 pub mod registers;
 
-/// The INA228 is an ultra-precise digital power monitor with a 20-bit delta-sigma ADC specifically
-/// designed for current-sensing applications. The device can measure a full-scale differential
-/// input of ±163.84 mV or ±40.96 mV across a resistive shunt sense element with common-mode
-/// voltage support from –0.3 V to +85 V.
-///
-/// For a full description and usage examples, refer to the [module documentation](self).
+type VEML7700I2cCodec = embedded_registers::i2c::codecs::OneByteRegAddrCodec;
+
 #[device]
 #[maybe_async_cfg::maybe(
     idents(hal(sync = "embedded_hal", async = "embedded_hal_async"), RegisterInterface),
     sync(feature = "sync"),
     async(feature = "async")
 )]
-pub struct INA228<I: embedded_registers::RegisterInterface> {
+pub struct INA226<I: embedded_registers::RegisterInterface> {
     /// The interface to communicate with the device
     interface: I,
-    /// Shunt resistance
-    shunt_resistance: ElectricalResistance,
-    /// Maximum expected current
-    max_expected_current: ElectricCurrent,
-    /// Configured nA/LSB for current readings
-    pub current_lsb_na: i64,
-    /// The configured adc range
-    pub adc_range: self::registers::AdcRange,
+}
+
+#[maybe_async_cfg::maybe(
+    idents(hal(sync = "embedded_hal", async = "embedded_hal_async"), I2cDevice),
+    sync(feature = "sync"),
+    async(feature = "async")
+)]
+impl<I> INA226<embedded_registers::i2c::I2cDevice<I, hal::i2c::SevenBitAddress, VEML7700I2cCodec>>
+where
+    I: hal::i2c::I2c<hal::i2c::SevenBitAddress> + hal::i2c::ErrorType,
+{
+    /// Initializes a new device with the given address on the specified bus.
+    /// This consumes the I2C bus `I`.
+    ///
+    /// Before using this device, you should call the [`Self::init`] method.
+    #[inline]
+    pub fn new_i2c(interface: I, address: Address) -> Self {
+        Self {
+            interface: embedded_registers::i2c::I2cDevice::new(interface, address.into()),
+        }
+    }
 }
