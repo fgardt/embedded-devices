@@ -58,6 +58,7 @@ Below you will find a list of all currently supported devices. Please visit thei
 | Texas Instruments | INA228 | I2C | 85V, 20-bit current shunt and power monitor | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/texas_instruments/ina228/index.html) |
 | Texas Instruments | TMP102 | I2C | Temperature sensor with ±0.5°C to ±3°C accuracy depending on the temperature range | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/texas_instruments/tmp102/index.html) |
 | Texas Instruments | TMP117 | I2C | Temperature sensor with ±0.1°C to ±0.3°C accuracy depending on the temperature range | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/texas_instruments/tmp117/index.html) |
+| Vishay | VEML7700 | I2C | High accuracy ambient light sensor | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/vishay/veml7700/index.html) |
 
 ## Example usage
 

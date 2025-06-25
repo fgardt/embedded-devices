@@ -26,7 +26,7 @@ uom = { version = "0.36.0", features = ["f32", "f64", "si", "u8", "u16", "u32", 
 crc = "3.2.1"
 
 [features]
-default = ["sync", "async"]
+default = ["sync", "async", "vishay-veml7700"]
 
 sync = ["embedded-registers/sync"]
 async = ["dep:embedded-hal-async", "embedded-registers/async"]
@@ -55,6 +55,9 @@ texas_instruments-tmp117 = []
 
 # Sensirion
 sensirion-scd4x = []
+
+# Vishay
+vishay-veml7700 = []
 
 [package.metadata.docs.rs]
 all-features = true
