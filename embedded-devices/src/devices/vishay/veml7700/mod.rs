@@ -6,6 +6,8 @@
 //! The ambient light result is as digital value available.
 //!
 
+use self::address::Address;
+
 use embedded_devices_derive::{device, device_impl};
 // use uom::si::illuminance::lux; // requires uom 0.38.0
 
@@ -20,7 +22,7 @@ type VEML7700I2cCodec = embedded_registers::i2c::codecs::OneByteRegAddrCodec;
     sync(feature = "sync"),
     async(feature = "async")
 )]
-pub struct INA226<I: embedded_registers::RegisterInterface> {
+pub struct VEML7700<I: embedded_registers::RegisterInterface> {
     /// The interface to communicate with the device
     interface: I,
 }
@@ -30,7 +32,7 @@ pub struct INA226<I: embedded_registers::RegisterInterface> {
     sync(feature = "sync"),
     async(feature = "async")
 )]
-impl<I> INA226<embedded_registers::i2c::I2cDevice<I, hal::i2c::SevenBitAddress, VEML7700I2cCodec>>
+impl<I> VEML7700<embedded_registers::i2c::I2cDevice<I, hal::i2c::SevenBitAddress, VEML7700I2cCodec>>
 where
     I: hal::i2c::I2c<hal::i2c::SevenBitAddress> + hal::i2c::ErrorType,
 {
@@ -45,3 +47,11 @@ where
         }
     }
 }
+
+#[device_impl]
+#[maybe_async_cfg::maybe(
+    idents(hal(sync = "embedded_hal", async = "embedded_hal_async"), RegisterInterface),
+    sync(feature = "sync"),
+    async(feature = "async")
+)]
+impl<I: embedded_registers::RegisterInterface> VEML7700<I> {}
