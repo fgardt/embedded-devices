@@ -29,6 +29,7 @@ Below you will find a list of all currently supported devices. Please visit thei
 | Analog Devices | MAX31865 | SPI | Precision temperature converter for RTDs, NTCs and PTCs | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/analog_devices/max31865/index.html) |
 | Belling | BL0942 | SPI | Calibration-free Metering IC | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/belling/bl0942/index.html) |
 | Bosch | BME280 | I2C/SPI | Temperature, pressure and relative humidity sensor | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/bosch/bme280/index.html) |
+| Bosch | BME690 | I2C/SPI | Temperature, pressure, relative humidity and gas sensor | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/bosch/bme690/index.html) |
 | Bosch | BMP280 | I2C/SPI | Temperature and pressure sensor | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/bosch/bmp280/index.html) |
 | Bosch | BMP390 | I2C/SPI | Temperature and pressure sensor | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/bosch/bmp390/index.html) |
 | Microchip | MCP3204 | SPI | 12-bit ADC, 4 single- or 2 differential channels | [Docs](https://docs.rs/embedded-devices/latest/embedded_devices/devices/microchip/mcp3204/index.html) |

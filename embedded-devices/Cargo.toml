@@ -29,7 +29,7 @@ heapless = "0.9"
 log = { version = "0.4", optional = true }
 
 [features]
-default = ["sync", "async"]
+default = ["sync", "async", "bosch-bme690"]
 
 sync = ["embedded-interfaces/sync"]
 async = ["dep:embedded-hal-async", "embedded-interfaces/async"]
@@ -46,6 +46,7 @@ all-devices = [
 	"analog_devices-max31865",
 	"belling-bl0942",
 	"bosch-bme280",
+	"bosch-bme690",
 	"bosch-bmp280",
 	"bosch-bmp390",
 	"microchip-mcp9808",
@@ -76,6 +77,7 @@ belling-bl0942 = []
 
 # Bosch
 bosch-bme280 = []
+bosch-bme690 = []
 bosch-bmp280 = ["bosch-bme280"]
 bosch-bmp390 = []
 
